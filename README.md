@@ -18,6 +18,10 @@ Email: jihunkimkw@gmail.com
 
 Repository: https://github.com/shblue21/merged-johnson-core-family
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22096459.svg)](https://doi.org/10.5281/zenodo.22096459)
+
+Zenodo v1.0.0: https://doi.org/10.5281/zenodo.22096460
+
 ## Contents
 
 - main.tex, references.bib — manuscript source.
@@ -64,8 +68,8 @@ For a byte-reproducible release PDF, use a fixed SOURCE_DATE_EPOCH:
 
 ## Citation
 
-Citation metadata is provided in CITATION.cff. The Zenodo DOI will be added
-after the first archived release.
+Citation metadata is provided in CITATION.cff. Use the version DOI for exact
+reproduction and the concept DOI to cite all versions.
 
 ## License
 
