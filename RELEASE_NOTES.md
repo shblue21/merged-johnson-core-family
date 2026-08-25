@@ -34,6 +34,11 @@ supplementary/README.md.
 The deterministic release-candidate PDF has SHA-256
 `c00f1a7e2dd16605ef6d52df00583cb89423e96f1ff6195fe8ef090b0a24ad42`.
 
+### Archival identifiers
+
+- Version DOI: https://doi.org/10.5281/zenodo.22096460
+- All-versions DOI: https://doi.org/10.5281/zenodo.22096459
+
 ### Reproduction
 
     python3 -m venv .venv
