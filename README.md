@@ -16,6 +16,8 @@ Author: Jihun Kim
 
 Email: jihunkimkw@gmail.com
 
+Repository: https://github.com/shblue21/merged-johnson-cores
+
 ## Contents
 
 - main.tex, references.bib — manuscript source.
@@ -62,8 +64,8 @@ For a byte-reproducible release PDF, use a fixed SOURCE_DATE_EPOCH:
 
 ## Citation
 
-Citation metadata is provided in CITATION.cff. Add the GitHub repository URL
-and Zenodo DOI after the first public release.
+Citation metadata is provided in CITATION.cff. The Zenodo DOI will be added
+after the first archived release.
 
 ## License
 
