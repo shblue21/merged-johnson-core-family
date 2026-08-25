@@ -16,7 +16,7 @@ Author: Jihun Kim
 
 Email: jihunkimkw@gmail.com
 
-Repository: https://github.com/shblue21/merged-johnson-cores
+Repository: https://github.com/shblue21/merged-johnson-core-family
 
 ## Contents
 

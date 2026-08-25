@@ -9,7 +9,7 @@ authors:
 version: 1.0.0
 date-released: 2026-08-25
 license: MIT
-repository-code: "https://github.com/shblue21/merged-johnson-cores"
+repository-code: "https://github.com/shblue21/merged-johnson-core-family"
 preferred-citation:
   type: unpublished
   title: "Cores of the Merged Johnson Graphs J(2k+1,k) with relations 2 through k-2"
