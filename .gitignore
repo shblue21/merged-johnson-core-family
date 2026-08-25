@@ -1,0 +1,17 @@
+.venv/
+.DS_Store
+__pycache__/
+*.py[cod]
+
+main.aux
+main.bbl
+main.blg
+main.log
+main.out
+*.synctex.gz
+
+build/
+dist/
+rendered/
+AUDIT_REPORT.md
+RELEASE_CHECKLIST.md

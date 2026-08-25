@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use these algebra checks, please cite this repository and the accompanying manuscript."
+type: software
+title: "Supplementary algebra checks for Cores of the Merged Johnson Graphs J(2k+1,k) with relations 2 through k-2"
+authors:
+  - family-names: Kim
+    given-names: Jihun
+    email: jihunkimkw@gmail.com
+version: 1.0.0
+date-released: 2026-08-25
+license: MIT
+preferred-citation:
+  type: unpublished
+  title: "Cores of the Merged Johnson Graphs J(2k+1,k) with relations 2 through k-2"
+  authors:
+    - family-names: Kim
+      given-names: Jihun
+      email: jihunkimkw@gmail.com
+  year: 2026

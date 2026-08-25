@@ -1,0 +1,842 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\hypersetup{
+  pdftitle={Cores of the Merged Johnson Graphs J(2k+1,k) with relations 2 through k-2},
+  pdfauthor={Jihun Kim},
+  pdfkeywords={graph core, graph endomorphism, merged Johnson graph, Johnson scheme, qualitative independence}
+}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\one}{\boldsymbol{1}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\R}{\mathbb R}
+
+\title{Cores of the Merged Johnson Graphs\\
+$J(2k+1,k)_{\{2,\ldots,k-2\}}$}
+\author{Jihun Kim\thanks{Email:
+\href{mailto:jihunkimkw@gmail.com}{\texttt{jihunkimkw@gmail.com}}}}
+\date{25 August 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+For $k\ge4$, let $G_k$ be the graph on the $k$-subsets of $[2k+1]$, where
+two distinct vertices are adjacent when their intersection has size between
+$2$ and $k-2$.  We prove that
+\[
+ \End(G_k)=\Aut(G_k)\cong S_{2k+1},
+\]
+and hence that $G_k$ is a core.  We also show that
+$\alpha(G_k)=2k+3$ and classify the maximum independent sets.  The proof
+reduces a nontrivial core retraction to a translate-transversal identity and
+then uses the multiplicity-free Johnson decomposition to separate the
+spectral supports of a fibre and the core image.  The resulting support
+restrictions would make one of the remaining Johnson relation counts
+negative, a contradiction.  It follows that the almost-uniform
+$3$-qualitative independence hypergraph
+$3\text{-}\mathrm{AUQI}(n,2)$ is a core for every odd $n\ge9$.
+\end{abstract}
+
+\noindent\textbf{Keywords.}
+Graph core; graph endomorphism; merged Johnson graph; Johnson association
+scheme; qualitative independence; extremal set system.
+
+\medskip
+\noindent\textbf{MSC 2020.}
+05C60, 05C25, 05E30, 05D05.
+
+\section{Introduction}
+
+A finite graph is a \emph{core} if every endomorphism is an automorphism;
+equivalently, it has no retraction onto a proper subgraph homomorphically
+equivalent to it \cite{HellNesetril1992,HahnTardif1997}.  Determining cores
+is particularly subtle for highly symmetric graphs: the automorphism group
+describes the invertible maps but does not, by itself, exclude
+noninvertible foldings.  General results for symmetric and geometric graphs
+give strong restrictions on their cores
+\cite{CameronKazanidis2008,GodsilRoyle2011,Roberson2013}, but do not decide
+the merged relations considered here.
+
+For $k\ge4$, define
+\begin{equation}\label{eq:def-Gk}
+ \Omega=\binom{[2k+1]}k,\qquad
+ V(G_k)=\Omega,\qquad
+ A\sim B\iff 2\le |A\cap B|\le k-2.
+\end{equation}
+If $d(A,B)=k-|A\cap B|$ is Johnson distance, then the edge set is the
+union of relations $2,\ldots,k-2$.  The same interval occurs in both
+intersection and distance notation; thus
+\[
+ G_k=J(2k+1,k)_{\{2,\ldots,k-2\}}.
+\]
+Jones's classification of
+automorphisms of merged Johnson graphs gives
+\begin{equation}\label{eq:aut}
+ \Aut(G_k)\cong S_{2k+1}
+\end{equation}
+in its natural action on $\Omega$ \cite[Theorem~2]{Jones2005}.  Indeed, for
+the Johnson distance set $I=\{2,\ldots,k-2\}$, the relevant exceptional condition
+$I=k+1-I$ does not occur, since
+$k+1-I=\{3,\ldots,k-1\}\ne I$.  The remaining question for this family is
+whether $G_k$ admits a noninjective endomorphism.
+
+The family arises in qualitative independence.  For odd $n=2k+1$, the
+vertices of $3\text{-}\mathrm{AUQI}(n,2)$ are almost-balanced binary
+strings, represented by $k$-subsets of $[n]$, and a hyperedge is a triple
+realizing all eight binary patterns.  Thomas and Akhtar identify $G_k$ as
+the relevant $2$-section for
+$3\text{-}\mathrm{AUQI}(2k+1,2)$ and show that if this merged Johnson graph
+is a core, then so is the hypergraph
+\cite[Lemma~7 and Proposition~7]{ThomasAkhtar2026}.  They pose the odd
+cases as a direction for further work.  Theorem~\ref{thm:main} resolves
+that question for every odd $n\ge9$.
+
+\begin{theorem}\label{thm:main}
+For every integer $k\ge4$,
+\[
+ \End(G_k)=\Aut(G_k)\cong S_{2k+1}.
+\]
+In particular, $G_k$ is a core.
+\end{theorem}
+
+The proof begins with the extremal and divisibility constraints on the
+fibres of a minimum-rank retraction.  Each fibre meets every translate of
+the core image in exactly one vertex.  In the language of permutation
+groups, this is a non-separation witness for the natural
+$S_{2k+1}$-action; see \cite{AljohaniBambergCameron2017}.  The additional
+fact that the fibre is independent restricts its distance distribution to
+three Johnson relations.  The transversal identity separates the
+nonconstant Johnson supports of the fibre and the core image, after which
+positivity excludes first the proper divisors of $2k+3$ and then the
+remaining fibre size $2k+3$.
+
+We also characterize the maximum independent sets, although only the value
+$\alpha(G_k)=2k+3$ is used in the core argument.
+
+\section{The extremal independent families}\label{sec:alpha}
+
+An independent family $\mathcal F\subseteq \Omega$ has
+\begin{equation}\label{eq:allowed-intersections}
+ |A\cap B|\in\{0,1,k-1\}\qquad(A\ne B\in\mathcal F).
+\end{equation}
+General restricted-intersection results are given in
+\cite{DezaErdosFrankl1978}.  In the case $n=2k+1$ and
+$L=\{0,1,k-1\}$, the following proposition gives the sharp bound and
+characterizes equality.
+
+\begin{proposition}\label{prop:alpha}
+For every $k\ge4$,
+\[
+ \alpha(G_k)=2k+3.
+\]
+Moreover, every maximum independent family is, up to a permutation of
+$[2k+1]$, of the following form.  Choose disjoint sets $U,T,\{p\}$ with
+$|U|=k+1$ and $|T|=k-1$; then
+\begin{equation}\label{eq:max-independent}
+ \mathcal M(U,T,p)=
+ \binom Uk\ \cup\ \{T\cup\{x\}:x\in U\cup\{p\}\}.
+\end{equation}
+Consequently the number of maximum independent families is
+\[
+ (k+2)\binom{2k+1}{k-1}.
+\]
+\end{proposition}
+
+\begin{proof}
+Define $A\equiv B$ when $A=B$ or $|A\cap B|=k-1$.  If
+$A\equiv B\equiv C$, then $|A\cap C|\ge k-2\ge2$; hence
+\eqref{eq:allowed-intersections} shows that $A\equiv C$.  Thus the
+$\equiv$-classes are cliques in the ordinary Johnson graph.  Each such
+clique is contained in one of the two familiar types
+\begin{align*}
+ \text{star: }&\quad \{T\cup\{x\}:x\in R\},\qquad
+ |T|=k-1,\ R\subseteq[2k+1]\setminus T,\\
+ \text{top: }&\quad \{U\setminus\{u\}:u\in R\},\qquad
+ |U|=k+1,\ R\subseteq U.
+\end{align*}
+Indeed, after fixing two members with a common $(k-1)$-set, every third
+member either contains that common set or is contained in their
+$(k+1)$-element union.
+
+Suppose first that a star component has size at least four.  An outside
+block must be disjoint from its common $(k-1)$-set $T$.  Otherwise it
+contains at most one point of $T$ and must avoid every point indexing the
+star component.  If that component has size $r\ge4$, at most
+$1+(k+2-r)<k$ points remain available.
+Therefore all outside blocks lie in the $(k+2)$-set
+$W=[2k+1]\setminus T$.  Two distinct outside blocks meet in at least
+$k-2$ points, while independence restricts their intersection to
+$\{0,1,k-1\}$.  Since $k\ge4$, they must meet in $k-1$ points.  Thus all
+outside blocks form one Johnson clique of size at most $k+1$.  The original
+star has size at most $k+2$, so
+$|\mathcal F|\le2k+3$.
+
+Suppose next that a top component has size at least four, contained in
+$\binom Uk$ with $|U|=k+1$.  Put $W=[2k+1]\setminus U$, so $|W|=k$.
+For an outside block $B$, write $a=|B\cap U|$.  Comparison with
+$U\setminus\{u\}$ gives $a-\one_{\{u\in B\}}\le1$ for each index $u$ of
+the component.  If $a\ge3$, then
+$a-\one_{\{u\in B\}}\ge2$, a contradiction.  If $a=2$, the inequality
+forces all four component indices to lie in $B$, contradicting
+$|B\cap U|=2$.  Hence $a\le1$, and $B$ is either $W$ or has the form
+\[
+ \{u\}\cup(W\setminus\{w\}),\qquad u\in U,\quad w\in W.
+\]
+Two blocks of the latter type are compatible only when they have the same
+$u$ or the same $w$.  Thus they lie in a row or a column of the complete
+bipartite grid $U\times W$; with $W$ included, their number is at most
+$k+2$.  The top has size at most $k+1$, again giving $2k+3$.
+
+It remains to treat families whose components all have size at most three.
+Distinct components have disjoint $2$-shadows, since a common pair would
+give intersection at least two.  A component of size $r=1,2,3$ contains at
+least, respectively,
+\[
+ \binom{k}{2},\qquad \frac{(k-1)(k+2)}2,\qquad
+ \frac{k(k+1)}2
+\]
+distinct pairs.  Each quantity is at least
+$r k(k+1)/6$.  Summing disjoint shadows gives
+\[
+ |\mathcal F|\frac{k(k+1)}6
+ \le \binom{2k+1}{2}=k(2k+1),
+\]
+and therefore
+\[
+ |\mathcal F|\le \frac{6(2k+1)}{k+1}<2k+3.
+\]
+The strict inequality follows from
+\[
+ (2k+3)(k+1)-6(2k+1)=2k^2-7k-3>0
+ \qquad(k\ge4).
+\]
+
+The family in \eqref{eq:max-independent} has size $(k+1)+(k+2)$ and
+satisfies \eqref{eq:allowed-intersections}, proving the value of
+$\alpha(G_k)$.  Equality in either large-component case forces both
+component bounds to be tight.  In the star case, the outside $k$-sets in
+the $(k+2)$-set $W$ correspond, by complementation, to a maximum
+pairwise-intersecting family of $2$-subsets of $W$.  Since $|W|=k+2\ge6$,
+a maximum such family is a full star, and
+hence a full top on a $(k+1)$-subset $U\subset W$.  The one remaining
+point is $p$.  In the top case, equality forces the full top and $k+2$
+outside blocks.  A row of $U\times W$, together with $W$, has only $k+1$
+blocks, whereas a full column, together with $W$, has $k+2$; the latter is
+the full star with common $(k-1)$-set $T=W\setminus\{p\}$.  Thus
+\eqref{eq:max-independent} is the only equality type.  Its two
+$\equiv$-components have the distinct sizes $k+2$ and $k+1$, so the common
+set $T$ and the remaining point $p$ are uniquely recoverable from the
+family.  This gives $(k+2)\binom{2k+1}{k-1}$ families.
+\end{proof}
+
+\section{From an endomorphism to equal fibres}\label{sec:reduction}
+
+Put
+\[
+ N=|\Omega|=\binom{2k+1}{k}.
+\]
+The following lemmas reduce a noninjective endomorphism to two divisibility
+conditions and a transversal identity.
+
+\begin{lemma}[Minimum-rank retraction]\label{lem:retraction}
+If $G_k$ has a non-automorphic endomorphism, then it has a retraction
+$r:G_k\to H$ onto a proper core $H$.  All fibres of $r$ have a common size
+$s>1$.  If $q=|H|$, then
+\begin{equation}\label{eq:sqN}
+ sq=N,\qquad s\mid N.
+\end{equation}
+Moreover, for every fibre $F_y=r^{-1}(y)$ and every
+$\gamma\in S_{2k+1}$,
+\begin{equation}\label{eq:transversal}
+ |F_y\cap\gamma H|=1.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Choose an endomorphism $\phi$ of minimum rank and put
+$H=G_k[\phi(\Omega)]$, the subgraph induced by its vertex image.  The restriction
+$\phi|_H$ is injective, for otherwise
+$\phi^2$ has smaller rank.  Since $H$ is finite, this restriction is an
+automorphism.  Composing $\phi$ with its inverse on $H$ gives a retraction
+\[
+ r=(\phi|_H)^{-1}\circ\phi:G_k\to H.
+\]
+If $H$ had a noninjective endomorphism, composing it with $r$ would produce
+an endomorphism of $G_k$ with smaller rank.  Thus $H$ is a core.
+
+For $y\in H$ and $\gamma\in S_{2k+1}$, the map
+$r\circ\gamma|_H:H\to H$ is an endomorphism of the core $H$, hence an
+automorphism.  Exactly one point of $\gamma H$ therefore lies in the fibre
+$F_y$, proving \eqref{eq:transversal}.
+
+Average \eqref{eq:transversal} over $\gamma$.  Since the point-permutation
+group is transitive on $\Omega$, each vertex belongs to exactly
+$|S_{2k+1}|q/N$ translates $\gamma H$.  Hence
+\[
+ |S_{2k+1}|=
+ \sum_\gamma |F_y\cap\gamma H|
+ =|F_y|\frac{|S_{2k+1}|q}{N}.
+\]
+Thus $|F_y|=N/q$, independently of $y$, and \eqref{eq:sqN} follows.  This
+also gives a direct proof, in the present setting, of the equal-fibre
+phenomenon for vertex-transitive graphs
+\cite{HahnTardif1997,Roberson2013}.
+\end{proof}
+
+\begin{lemma}[Divisibility by \texorpdfstring{$2k+3$}{2k+3}]
+\label{lem:second-divisor}
+Under the hypotheses of Lemma~\ref{lem:retraction},
+\begin{equation}\label{eq:alpha-product}
+ s\alpha(H)=2k+3.
+\end{equation}
+In particular,
+\begin{equation}\label{eq:s-divides-m}
+ s\mid 2k+3.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+If $I$ is independent in $H$, then $r^{-1}(I)$ is independent in $G_k$;
+equal fibres and Proposition~\ref{prop:alpha} give
+\begin{equation}\label{eq:alpha-upper}
+ \alpha(H)\le\frac{2k+3}{s}.
+\end{equation}
+The inclusion $H\hookrightarrow G_k$ and the retraction give homomorphisms
+in both directions, so $\chi_f(H)=\chi_f(G_k)$.  A vertex-transitive graph
+$G$ satisfies $\chi_f(G)=|V(G)|/\alpha(G)$, while every graph $Y$ satisfies
+$\chi_f(Y)\ge |V(Y)|/\alpha(Y)$
+\cite[Chapters~1--3]{ScheinermanUllman1997}.  Consequently
+\[
+ \frac{N}{2k+3}=\chi_f(G_k)=\chi_f(H)
+ \ge\frac{q}{\alpha(H)}=\frac{N/s}{\alpha(H)}.
+\]
+This reverses \eqref{eq:alpha-upper}, proving
+\eqref{eq:alpha-product} and hence \eqref{eq:s-divides-m}.
+\end{proof}
+
+\section{Spectral transversals in the Johnson scheme}\label{sec:spectral}
+
+Let $A_i$ be the matrix of Johnson distance $i$, so
+$A_i(A,B)=1$ precisely when $d(A,B)=i$.  Let $\rho$ denote the permutation
+representation of $S_{2k+1}$ on $\R^\Omega$.  Its multiplicity-free
+decomposition is
+\[
+ \R^\Omega=V_0\oplus V_1\oplus\cdots\oplus V_k,
+\]
+where $V_j\cong S^{(2k+1-j,j)}$.  Write
+$\rho_j=\rho|_{V_j}$ and let $E_j$ be orthogonal projection onto $V_j$.
+This is the standard Johnson association scheme;
+see, for example, \cite{BrouwerCohenNeumaier1989,GodsilNewman2006}.
+
+\begin{lemma}[Spectral-transversal lemma]\label{lem:ST}
+Let $F$ be a fibre and let $H$ be the core image in
+Lemma~\ref{lem:retraction}.  For every $j\ge1$,
+\begin{equation}\label{eq:SC}
+ \|E_j\one_F\|^2\,\|E_j\one_H\|^2=0.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:transversal}, for all $\gamma\in S_{2k+1}$,
+\[
+ \langle\one_F,\rho(\gamma)\one_H\rangle=1.
+\]
+As $|F||H|=sq=N$, removing the constant components gives
+\[
+ \left\langle
+ \one_F-\frac{s}{N}\one,
+ \rho(\gamma)\left(\one_H-\frac{q}{N}\one\right)
+ \right\rangle=0.
+\]
+After decomposing into $V_1,\ldots,V_k$, we may complexify; the real Specht
+modules here are absolutely irreducible.  Schur orthogonality then says that
+the matrix-coefficient spaces belonging to distinct irreducibles are
+orthogonal.  Since their sum is the zero function, every individual function
+\[
+ \gamma\longmapsto
+ \langle E_j\one_F,\rho_j(\gamma)E_j\one_H\rangle
+\]
+vanishes identically.  If $E_j\one_H\ne0$, its orbit spans the irreducible
+module $V_j$, forcing $E_j\one_F=0$.  This is exactly
+\eqref{eq:SC}.
+\end{proof}
+
+\subsection{Endpoint eigenvalues and fibre moments}
+
+Use the first-eigenmatrix convention
+\[
+ A_iE_j=P_j(i)E_j.
+\]
+The source \cite[Section~5.1 and Theorem~5.4]
+{AljohaniBambergCameron2017} uses the opposite order for the two indices.
+With our convention, the Eberlein polynomials are
+\begin{equation}\label{eq:Eberlein}
+ P_j(i)=\sum_{r=0}^{i}(-1)^{i-r}
+ \binom{k-r}{i-r}\binom{k-j}{r}\binom{k+1+r-j}{r}.
+\end{equation}
+Put
+\begin{equation}\label{eq:Kteps}
+ K=k+1,\qquad t=K-j,\qquad \epsilon=(-1)^j.
+\end{equation}
+Specializing \eqref{eq:Eberlein}, and using
+$A_1A_k=2A_{k-1}+(K-1)A_k$ for the middle endpoint, gives
+\begin{equation}\label{eq:endpoint-eigenvalues}
+ \boxed{
+ P_j(1)=t^2-K,\quad
+ P_j(k-1)=\epsilon\frac{t(t^2-2K+1)}2,\quad
+ P_j(k)=\epsilon t.}
+\end{equation}
+Let $v_i$ denote the valency of relation $i$.  At the three relevant
+distances,
+\begin{equation}\label{eq:valencies}
+ v_1=K(K-1),\qquad
+ v_{k-1}=\frac{K(K-1)^2}{2},\qquad
+ v_k=K.
+\end{equation}
+
+Each fibre is independent, so its distinct pairs have only distances
+$1,k-1,k$.  Let $x,y,z$ be the numbers of unordered pairs at these three
+distances and normalize
+\begin{equation}\label{eq:distance-distribution}
+ p_1=\frac{2x}{s(s-1)},\qquad
+ p_{k-1}=\frac{2y}{s(s-1)},\qquad
+ p_k=\frac{2z}{s(s-1)};\qquad p_1+p_{k-1}+p_k=1.
+\end{equation}
+Here $\one_F^{\mathsf T}A_1\one_F=2x$, and similarly at distances
+$k-1$ and $k$; this accounts for the factor $2$.
+With $\mu_j=\dim V_j$, the primitive-idempotent expansion
+\[
+ E_j=\frac{\mu_j}{N}\sum_{i=0}^k\frac{P_j(i)}{v_i}A_i
+\]
+shows that
+\begin{equation}\label{eq:eta-def}
+ \|E_j\one_F\|^2=\frac{\mu_j}{N}\eta_j,
+\end{equation}
+where, writing $e_j=\eta_j/s$,
+\begin{equation}\label{eq:e-general}
+e_j=1+(s-1)(a_jp_1+b_jp_{k-1}+c_jp_k)
+\end{equation}
+with
+\begin{equation}\label{eq:abc}
+ a_j=\frac{t^2-K}{K(K-1)},\quad
+ b_j=\frac{\epsilon t(t^2-2K+1)}{K(K-1)^2},\quad
+ c_j=\frac{\epsilon t}{K}.
+\end{equation}
+In particular, every $\eta_j$ and $e_j$ is nonnegative.
+
+For the core image define
+\begin{equation}\label{eq:hR}
+ h_j=\|E_j\one_H\|^2,\qquad
+ R_i=\one_H^{\mathsf T}A_i\one_H
+     =\sum_{j=0}^kP_j(i)h_j\ge0.
+\end{equation}
+Since $sq=N$,
+\begin{equation}\label{eq:h-masses}
+ h_0=\frac{q^2}{N}=\frac qs,\qquad
+ \sum_{j\ge1}h_j=\frac{q(s-1)}s.
+\end{equation}
+Lemma~\ref{lem:ST} and \eqref{eq:eta-def} give the complementarity
+condition
+\begin{equation}\label{eq:eta-h}
+ \eta_jh_j=0\qquad(1\le j\le k).
+\end{equation}
+
+\begin{lemma}[The first module]\label{lem:first-module}
+Every fibre satisfies $\eta_1>0$.  Consequently
+\begin{equation}\label{eq:h1-zero}
+ h_1=0.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+If $E_1\one_F=0$, then all point degrees in $F$ are equal, with common
+value $sk/(2k+1)$.  Since $\gcd(k,2k+1)=1$, integrality gives
+$2k+1\mid s$.  But $s\mid2k+3$ by Lemma~\ref{lem:second-divisor}, and
+$\gcd(2k+1,2k+3)=1$, a contradiction to $s>1$.  Thus $\eta_1>0$, and
+\eqref{eq:h1-zero} follows from \eqref{eq:eta-h}.
+\end{proof}
+
+\begin{remark}[A design consequence]\label{rem:design}
+For $j=2$, the three normalized endpoint eigenvalues are
+\[
+ \frac{k-3}{k+1},\qquad
+ \frac{(k-1)(k-4)}{k(k+1)},\qquad
+ \frac{k-1}{k+1}.
+\]
+They are nonnegative for $k\ge4$, so the defining moment formula gives
+$\eta_2\ge s$ and hence $h_2=0$.  The point--block and pair--block incidence
+matrices have
+column spaces $V_0\oplus V_1$ and
+$V_0\oplus V_1\oplus V_2$, respectively.  Hence vanishing of the first two
+nonconstant Johnson components is equivalent to constant point and pair
+degrees, that is, to the $2$-design conditions.  Double counting incidences
+and point-pairs gives
+\[
+ r_H=\frac{kq}{2k+1},\qquad
+ \lambda_H=\frac{(k-1)q}{2(2k+1)}.
+\]
+This observation is not needed in the proof of Theorem~\ref{thm:main}.
+\end{remark}
+
+\section{Proper divisors of \texorpdfstring{$2k+3$}{2k+3}}\label{sec:proper}
+
+Set
+\begin{equation}\label{eq:m}
+ m=2k+3=2K+1.
+\end{equation}
+Suppose $1<s<m$.  Because $s\mid m$ and $m$ is odd,
+\begin{equation}\label{eq:small-s-range}
+ 3\le s\le\frac{2K+1}{3}\le K.
+\end{equation}
+We now exclude these values of $s$.
+
+\begin{lemma}[Positivity for even modules]\label{lem:T1-even}
+If $1\le j\le k$ is even and $3\le s\le K$, then
+\begin{equation}\label{eq:T1-even-gap}
+ e_j\ge\frac{K-s+1}{K}>0.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Here $\epsilon=1$.  The three coefficient shifts are
+\begin{align}
+ a_j+\frac1K&=\frac{t^2-1}{K(K-1)}\ge0,\label{eq:even-a}\\
+ b_j+\frac1K&=
+ \frac{t^3-(2K-1)t+(K-1)^2}{K(K-1)^2}>0,\label{eq:even-b}\\
+ c_j+\frac1K&=\frac{t+1}{K}>0.\label{eq:even-c}
+\end{align}
+For the strict sign in \eqref{eq:even-b}, write the numerator as
+$\Psi_K(t)$.  If $t=1$, then $\Psi_K(1)=(K-1)(K-3)>0$.  If $t\ge2$, then
+$K\ge t+1$, $\Psi_K(t)$ is increasing as a function of integer
+$K\ge t+1$, and
+$\Psi_{t+1}(t)=t(t^2-t-1)>0$.
+Using $p_1+p_{k-1}+p_k=1$ in \eqref{eq:e-general}, we obtain the affine
+identity
+\begin{equation}\label{eq:T1-even-identity}
+ e_j-\frac{K-s+1}{K}
+ =(s-1)\left[
+ \left(a_j+\frac1K\right)p_1+
+ \left(b_j+\frac1K\right)p_{k-1}+
+ \left(c_j+\frac1K\right)p_k\right]\ge0.
+\end{equation}
+\end{proof}
+
+\begin{lemma}[Zero criterion for odd modules]\label{lem:T1-odd}
+Suppose $3\le s\le K$ and $1\le j\le k$ is odd.  Put $t=K-j$ and define
+\[
+ D_j=K-(s-1)t.
+\]
+If $D_j\ge0$, then $e_j>0$.  Consequently
+\begin{equation}\label{eq:zero-criterion}
+ e_j=0\quad\Longrightarrow\quad
+ j\text{ is odd and }D_j\le-1.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Since $\epsilon=-1$,
+\begin{equation}\label{eq:AB}
+ A_t:=a_j-c_j=\frac{(t-1)(t+K)}{K(K-1)}\ge0,\qquad
+ C_t:=b_j-c_j=\frac{t(K^2-t^2)}{K(K-1)^2}>0.
+\end{equation}
+Eliminating $p_k$ gives
+\begin{equation}\label{eq:T1-odd-basic}
+ e_j-\frac{D_j}{K}=(s-1)(A_tp_1+C_tp_{k-1}).
+\end{equation}
+If $D_j>0$, then \eqref{eq:T1-odd-basic} gives
+$e_j\ge D_j/K>0$.
+\begin{samepage}
+Suppose $D_j=0$.  Then
+$(s-1)t=K$ and $3\le s\le K$, so
+\[
+ 2\le t\le K/2,\qquad j-1=K-t-1>0.
+\]
+With
+\[
+ \lambda_t=\frac{(t-1)(t+K)}{(K-2)(2K-1)},
+\]
+simplification gives
+\begin{equation}\label{eq:T1-D0}
+ e_j-\lambda_t e_1-\lambda_t\frac{j-1}{t}
+ =\frac{(K+t)(K-t-1)(t(K-2)+1)}
+ {t(K-2)(K-1)^2}\,p_{k-1}\ge0.
+\end{equation}
+The coefficient $\lambda_t$ is chosen to eliminate the $p_1$ term.
+Moreover, $\lambda_t(j-1)/t$ is positive.  Since $e_1\ge0$, this
+proves $e_j>0$.
+\end{samepage}
+Together with Lemma~\ref{lem:T1-even}, this yields
+\eqref{eq:zero-criterion}; $D_j$ is integral, so $D_j<0$ means
+$D_j\le-1$.
+\end{proof}
+
+\begin{proposition}\label{prop:proper-impossible}
+No proper divisor $s$ of $m$ can be the common fibre size of a proper core
+retraction of $G_k$.
+\end{proposition}
+
+\begin{proof}
+By \eqref{eq:eta-h}, the nonconstant support of $(h_j)$ is contained in
+the zero set of $(e_j)$.  Lemmas~\ref{lem:T1-even} and
+\ref{lem:T1-odd} show that every supported index is odd and has
+$D_j\le-1$.  Let
+\[
+ W=\sum_{j\ge1}h_j=\frac{q(s-1)}s,\qquad w_j=\frac{h_j}{W}.
+\]
+For supported odd $j$, \eqref{eq:endpoint-eigenvalues} gives
+$P_j(k)=-t$.  Including the constant contribution
+$P_0(k)h_0=Kq/s$, we obtain
+\begin{equation}\label{eq:Rk-separation}
+ \frac{s}{q}R_k
+ =K-(s-1)\sum_jw_jt
+ =\sum_jw_j\bigl(K-(s-1)t\bigr)
+ =\sum_jw_jD_j\le-1.
+\end{equation}
+Thus $R_k\le-q/s<0$, contradicting the nonnegativity in
+\eqref{eq:hR}.
+\end{proof}
+
+\section{The case \texorpdfstring{$s=2k+3$}{s=2k+3}}\label{sec:full}
+
+\begin{proposition}\label{prop:full-impossible}
+The value $s=2k+3$ cannot be the common fibre size of a proper core
+retraction of $G_k$.
+\end{proposition}
+
+Assume throughout this section that
+\begin{equation}\label{eq:full-s}
+ s=m=2K+1.
+\end{equation}
+For $t=K-j$ and $\epsilon=(-1)^j$, write
+$e_{\epsilon,t}:=e_j$.  Equation~\eqref{eq:e-general} becomes the affine
+function
+\begin{equation}\label{eq:full-bracket}
+ e_{\epsilon,t}=1+\frac{2(t^2-K)}{K-1}p_1
+ +\frac{2\epsilon t(t^2-2K+1)}{(K-1)^2}p_{k-1}
+ +2\epsilon tp_k.
+\end{equation}
+\begin{samepage}
+The required positivity follows from interpolation among three endpoint
+functions.
+\begin{lemma}[Endpoint interpolation]\label{lem:endpoint-interpolation}
+Under the assumption $s=2K+1$, suppose $K\ge5$.
+\begin{enumerate}
+ \item If $K$ is odd, set
+ \[
+  B_1=e_{-,K-1}=e_1,\qquad
+  B_{k-1}=e_{-,2}=e_{k-1},\qquad
+  B_k=e_{+,1}=e_k.
+ \]
+ On the parity grids
+ \[
+  (-,t),\ t=2,4,\ldots,K-1,\qquad
+  (+,t),\ t=1,3,\ldots,K-2,
+ \]
+ every $e_{\epsilon,t}$ is a nonnegative linear combination of
+ $B_1,B_{k-1},B_k$.  Away from the three displayed endpoints, the
+ coefficient of $B_1$ is positive.
+
+ \item If $K$ is even, the same conclusion holds with
+ \[
+  B_1=e_{-,K-1}=e_1,\qquad
+  B_{k-1}=e_{+,2}=e_{k-1},\qquad
+  B_k=e_{-,1}=e_k
+ \]
+ on the grids
+ \[
+  (-,t),\ t=1,3,\ldots,K-1,\qquad
+  (+,t),\ t=2,4,\ldots,K-2.
+ \]
+\end{enumerate}
+\end{lemma}
+\end{samepage}
+
+\begin{proof}
+Solving the affine $3\times3$ systems gives the factored coefficients in
+Appendix~\ref{app:interpolation}.  Their denominators are positive for
+$K\ge5$, and the factors in their numerators give the stated signs on the
+two parity grids.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:full-impossible}]
+First suppose that $K$ is odd.  Since $B_1=e_1>0$ by
+Lemma~\ref{lem:first-module}, Lemma~\ref{lem:endpoint-interpolation} shows that
+every non-endpoint $e_j$ is positive.  Complementarity
+\eqref{eq:eta-h} and $h_1=0$ therefore confine the nonconstant core support
+to $j=k-1,k$.
+
+At these endpoints,
+\[
+\begin{array}{c|cc}
+ &P_j(1)&P_j(k)\\ \hline
+ j=k-1&4-K&-2\\
+ j=k&1-K&1 .
+\end{array}
+\]
+Using $h_{k-1}+h_k=q(s-1)/s$, $s-1=2K$, and the constant contribution
+$P_0(1)+P_0(k)=K^2$, we obtain
+\begin{equation}\label{eq:odd-core-identity}
+ R_1+R_k=\frac qsK(4-K)<0.
+\end{equation}
+This contradicts $R_1,R_k\ge0$ for every odd $K\ge5$.
+
+Now suppose that $K$ is even.  The same argument again leaves only
+$j=k-1,k$.  Here
+\[
+ P_{k-1}(1)=4-K,\qquad P_k(1)+3=4-K.
+\]
+Together with $P_0(1)=K(K-1)$ and $s-1=2K$, this gives
+\begin{equation}\label{eq:even-core-identity}
+ R_1+3h_k=\frac qsK(7-K).
+\end{equation}
+For even $K\ge8$ the right side is negative and the left side is
+nonnegative.  The only smaller even value is $K=6$ ($k=5$), but then
+$m=13$ does not divide $N=\binom{11}{5}=462$, so this fibre size is not a
+candidate.
+\end{proof}
+
+\section{Proof of the main theorem and consequences}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Suppose that $G_k$ has a non-automorphic endomorphism.  By
+Lemma~\ref{lem:retraction}, a minimum-rank choice gives a proper core
+retraction with common fibre size $s>1$.  Lemmas~\ref{lem:retraction} and
+\ref{lem:second-divisor} give
+\[
+ s\mid\binom{2k+1}{k},\qquad s\mid 2k+3.
+\]
+If $s<2k+3$, Proposition~\ref{prop:proper-impossible} gives a
+contradiction.  If $s=2k+3$, Proposition~\ref{prop:full-impossible} gives
+a contradiction.  Hence every endomorphism is injective.  On a finite
+graph it is therefore bijective; a bijective self-homomorphism permutes the
+finite edge set injectively and hence is an automorphism.  Finally
+\eqref{eq:aut} identifies the group as $S_{2k+1}$.
+\end{proof}
+
+\begin{corollary}\label{cor:AUQI}
+For every odd integer $n\ge9$, the almost-uniform qualitative independence
+hypergraph $3\text{-}\mathrm{AUQI}(n,2)$ is a core.
+\end{corollary}
+
+\begin{proof}
+Write $n=2k+1$, so $k\ge4$.  Theorem~\ref{thm:main} says that the merged
+Johnson graph $G_k$ is a core.  The transfer result of Thomas and Akhtar
+\cite[Lemma~7 and Proposition~7]{ThomasAkhtar2026} then gives the stated
+hypergraph conclusion.
+\end{proof}
+
+\appendix
+
+\section{Coefficients for endpoint interpolation}\label{app:interpolation}
+
+This appendix records the coefficients used in
+Lemma~\ref{lem:endpoint-interpolation}.  They are obtained by substituting
+$p_k=1-p_1-p_{k-1}$ into \eqref{eq:full-bracket} and solving in the affine
+basis $1,p_1,p_{k-1}$; direct substitution verifies the identities below.
+
+\subsection*{Odd \(K\)}
+
+With the endpoint functions from part~(1) of
+Lemma~\ref{lem:endpoint-interpolation}, the negative-parity functions satisfy
+\begin{equation}\label{eq:odd-minus-interp}
+ e_{-,t}=\alpha^-_OB_1+\beta^-_OB_{k-1}+\gamma^-_OB_k,
+\end{equation}
+where
+\begin{align*}
+ \alpha^-_O&=\frac{(t-2)(t+1)[K(K-t-1)+4t-3]}
+ {K(K-3)(4K-7)},\\
+ \beta^-_O&=\frac{(t+1)(K-t-1)[t(2K-5)+3]}
+ {3(K-3)(4K-7)},\\
+ \gamma^-_O&=\frac{(t-2)(K-t-1)[4t(K-1)+3]}
+ {3K(4K-7)}.
+\end{align*}
+The positive-parity functions satisfy
+\begin{equation}\label{eq:odd-plus-interp}
+ e_{+,t}=\alpha^+_OB_1+\beta^+_OB_{k-1}+\gamma^+_OB_k,
+\end{equation}
+where
+\begin{align*}
+ \alpha^+_O&=\frac{(t-1)(t+2)[K(K-1)+t(K-4)-3]}
+ {K(K-3)(4K-7)},\\
+ \beta^+_O&=\frac{(t-1)(K+t-1)[t(2K-5)-3]}
+ {3(K-3)(4K-7)},\\
+ \gamma^+_O&=\frac{(t+2)(K+t-1)[4t(K-1)-3]}
+ {3K(4K-7)}.
+\end{align*}
+For odd $K\ge5$, the denominators are positive.  On the grids in
+Lemma~\ref{lem:endpoint-interpolation}, every numerator is nonnegative, and
+$\alpha^\pm_O$ is positive away from the three endpoints.
+
+\subsection*{Even \(K\)}
+
+With the endpoint functions from part~(2) of the lemma, the negative-parity
+functions satisfy
+\begin{equation}\label{eq:even-minus-interp}
+ e_{-,t}=\alpha^-_EB_1+\beta^-_EB_{k-1}+\gamma^-_EB_k,
+\end{equation}
+where
+\begin{align*}
+ \alpha^-_E&=\frac{(t-1)(t+2)[K(K-t+1)+2t-1]}
+ {(K-2)(K+1)(4K-3)},\\
+ \beta^-_E&=\frac{(t-1)(K-t-1)[t(2K-1)+1]}
+ {3(K+1)(4K-3)},\\
+ \gamma^-_E&=\frac{(t+2)(K-t-1)[4t(K-2)+5]}
+ {3(K-2)(4K-3)}.
+\end{align*}
+The positive-parity functions satisfy
+\begin{equation}\label{eq:even-plus-interp}
+ e_{+,t}=\alpha^+_EB_1+\beta^+_EB_{k-1}+\gamma^+_EB_k,
+\end{equation}
+where
+\begin{align*}
+ \alpha^+_E&=\frac{(t-2)(t+1)[K(K+t+1)-2t-1]}
+ {(K-2)(K+1)(4K-3)},\\
+ \beta^+_E&=\frac{(t+1)(K+t-1)[t(2K-1)-1]}
+ {3(K+1)(4K-3)},\\
+ \gamma^+_E&=\frac{(t-2)(K+t-1)[4t(K-2)-5]}
+ {3(K-2)(4K-3)}.
+\end{align*}
+For even $K\ge6$, the same sign conclusions hold on the corresponding
+parity grids.
+
+\section*{Code availability}
+
+The supplement contains two exact-arithmetic Python scripts.  They check
+selected identities symbolically, reconstruct the interpolation
+coefficients, and run the finite-range tests listed in the supplementary
+README; they do not mechanize the combinatorial or representation-theoretic
+arguments.  The scripts were tested with Python~3.9 and SymPy~1.14 and can
+be run with \texttt{make check}.
+
+\section*{Declaration on AI-assisted tools}
+
+The author used OpenAI language models for conjecture exploration, symbolic
+calculation, proof review, and prose editing, and reviewed all resulting
+material.  The manuscript is licensed under CC BY 4.0; the accompanying
+Python scripts are licensed under the MIT License.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,9 @@
+This repository contains material under two licenses.
+
+1. The Python scripts, Makefile, continuous-integration configuration, and
+   related software files are licensed under the MIT License. See
+   LICENSE-CODE.
+
+2. The manuscript source, compiled manuscript, bibliography, and prose
+   documentation are licensed under the Creative Commons Attribution 4.0
+   International License (CC BY 4.0). See LICENSE-MANUSCRIPT.
